@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class LoginDTO
+    public class LoginDTO
     {
+            public LoginDTO(string Email, string Password)
+            {
+                EmailGrab = Email;
+                PasswordSet = Password;
+            }
+            public string EmailGrab { get; set; }
+            public string PasswordSet { get; set; }
+
+
+
+        
     }
 }
