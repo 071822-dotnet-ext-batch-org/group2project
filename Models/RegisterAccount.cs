@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class RegisterAccount
+    public class Accounts
     {
-        public RegisterAccount(Guid AccountID, string firstName, string lastName, bool isAdmin, string email, string password)
+        public Accounts(Guid AccountID, string FirstName, string LastName, bool IsAdmin, string Email, string Password, string Address)
         {
             accountID = AccountID;
-            FirstName = firstName;
-            LastName = lastName;
-            IsAdmin = isAdmin;
-            Email = email;
-            Password = password;
+            firstName = FirstName;
+            lastName = LastName;
+            isAdmin = IsAdmin;
+            email = Email;
+            password = Password;
+            address = Address; 
         }
+
         public Guid accountID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public bool IsAdmin { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-
-
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public bool isAdmin { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+        public string address { get; set; }
     }
 }
