@@ -37,10 +37,7 @@ variables:
         - task: NuGetCommand@2
           inputs:
             restoreSolution: '$(solution)'
-
-      - Job: build_job
-        dependsOn: build_installs
-        steps:
+            
         - task: DotNetCoreCLI@2
         displayname: 'building'
         inputs:
@@ -66,5 +63,7 @@ variables:
           - task: DotNetCoreCLI@2
             inputs:
               command: 'publish'
-              publishWebProjects: true
-              modifyOutputPath: false
+              publishWebProjects: false
+              # modifyOutputPath: false
+              projects: '$(solution)'
+              zipAfterPublish: true
