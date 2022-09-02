@@ -48,23 +48,23 @@ variables:
           projects: 'group2project_jonathan_sean_mikael/*.sln'
           arguments: '--configuration $(buildConfiguration)'
 
-  # - Stage: test
-  #   Jobs:
-  #     - Job: test_job
-  #       steps:
-  #       - task: DotNetCoreCLI@2
-  #         inputs:
-  #           command: 'test'
-  #           projects: '''**/*Tests/*.csproj'''
-  #           arguments: '''--configuration $(buildConfiguration)'''
-  #           testRunTitle: 'API Test'
+  - Stage: test
+    Jobs:
+      - Job: test_job
+        steps:
+        - task: DotNetCoreCLI@2
+          inputs:
+            command: 'test'
+            projects: '''**/*Tests/*.csproj'''
+            arguments: '''--configuration $(buildConfiguration)'''
+            testRunTitle: 'API Test'
   
-  # - Stage: publish
-  #   Jobs:
-  #     - Job: pubish_job
-  #       steps:
-  #         - task: DotNetCoreCLI@2
-  #           inputs:
-  #             command: 'publish'
-  #             publishWebProjects: true
-  #             modifyOutputPath: false
+  - Stage: publish
+    Jobs:
+      - Job: pubish_job
+        steps:
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'publish'
+              publishWebProjects: true
+              modifyOutputPath: false
