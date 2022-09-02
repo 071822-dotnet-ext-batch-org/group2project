@@ -8,18 +8,19 @@ namespace Models
 {
     public class Orders
     {
-        public Orders(Guid OrderID, Guid ProductIDFK, Guid AccountIDFK, DateTime OrderDate, Int32 OrderAmount)
+        public Orders(Guid OrderID, Guid FK_CartID, Guid FK_AccountID, DateTime OrderDate, Int32 OrderAmount)
         {
-            IDOrder = OrderID;
-            FKProduct = ProductIDFK;
-            FKAccount = AccountIDFK;
-            Date = OrderDate;
-            this.OrderAmount = OrderAmount;
+            orderID = OrderID;
+            FK_cartID = FK_CartID;
+            FK_accountID = FK_AccountID;
+            orderDate = OrderDate;
+            orderAmount = OrderAmount;
         }
-        public Guid IDOrder { get; set; }
-        public Guid FKProduct { get; set; }
-        public Guid FKAccount { get; set; }
-        public DateTime Date { get; set; }
-        public Int32 OrderAmount { get; set; }
+
+        public Guid orderID { get; set; }
+        public Guid FK_cartID { get; set; }
+        public Guid FK_accountID { get; set; }
+        public DateTime orderDate { get; set; }
+        public Int32 orderAmount { get; set; }
     }
 }

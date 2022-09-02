@@ -4,23 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models;
-public class Products
+namespace Models
 {
-    public Products(Guid ProductID,  string ProductName, string productcolor, int ProductAmount, Decimal ProductPrice, Int16 Productsize)
+    public class Products
     {
-        ProductsID = ProductID;
-        ProductDye = ProductName;
-        TheColor = productcolor;
-        TheAmount = ProductAmount;
-        ThePrice = ProductPrice;
-        TheSize = Productsize;
-    }
-    public Guid ProductsID { get; set; }
-    public string ProductDye { get; set; }
-    public string TheColor { get; set; }
-    public int TheAmount { get; set; }
-    public Decimal ThePrice { get; set; }
-    public Int16 TheSize { get; set; }
+        public Products(Guid ProductID, string ProductName, string ProductColor, int ProductAmount, Decimal ProductPrice, Int16 ProductSize)
+        {
+            productID = ProductID;
+            productName = ProductName;
+            productColor = ProductColor;
+            productAmount = ProductAmount;
+            productPrice = ProductPrice;
+            productSize = ProductSize;
+        }
 
+        public Guid productID { get; set; }
+        public string productName { get; set; }
+        public string productColor { get; set; }
+        public int productAmount { get; set; }
+        public Decimal productPrice { get; set; }
+        public Int16 productSize { get; set; }
+    }
 }

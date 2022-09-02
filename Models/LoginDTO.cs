@@ -10,11 +10,12 @@ namespace Models
     {
             public LoginDTO(string Email, string Password)
             {
-                EmailGrab = Email;
-                PasswordSet = Password;
+                email = Email;
+                password = Password;
             }
-            public string EmailGrab { get; set; }
-            public string PasswordSet { get; set; }
+
+            public string email { get; set; }
+            public string password { get; set; }
 
 
 
