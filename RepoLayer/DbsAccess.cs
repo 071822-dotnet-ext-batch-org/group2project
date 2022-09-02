@@ -15,7 +15,7 @@ namespace RepoLayer
         public async Task<bool> RegisterUserAsync(Guid accountID, string firstName, string lastName, bool isAdmin, string email, string password, string address)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"INSERT INTO Users (AccountID, FirstName, LastName, IsAdmin, Email, Password, Address) VALUES (@accountID, @firstname, @lastname, 0, @email, @password, @address)", connect))// The 0 means all new accounts are employees by default
+            using (SqlCommand command = new SqlCommand($"INSERT INTO p2.Accounts (AccountID, FName, LName, IsAdmin, Email, Password, Address) VALUES (@accountID, @firstname, @lastname, 0, @email, @password, @address)", connect))// The 0 means all new accounts are employees by default
             {
                 command.Parameters.AddWithValue("@accountID", accountID);
                 command.Parameters.AddWithValue("@firstname", firstName);
@@ -34,13 +34,13 @@ namespace RepoLayer
                 connect.Close();
                 return ret;
             }
-        }
+        }//EoM
 
 
         public async Task<bool> DoesUsernameAlreadyExistAsync(string email)//Made purely to get a 'yes' or 'no' value before the SQL query for program to know when to stop or continue in the IF statements
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"SELECT Email FROM Users WHERE Email = @email", connect))
+            using (SqlCommand command = new SqlCommand($"SELECT Email FROM p2.Accounts WHERE Email = @email", connect))
             {
                 command.Parameters.AddWithValue("@email", email);
                 connect.Open();
@@ -53,13 +53,13 @@ namespace RepoLayer
                 connect.Close();
                 return false;
             }
-        }
+        }//EoM
 
 
         public async Task<bool> LoginAsync(string email, string password)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"SELECT Email FROM Users WHERE Email = @email AND Password = @password", connect))
+            using (SqlCommand command = new SqlCommand($"SELECT Email FROM p2.Accounts WHERE Email = @email AND Password = @password", connect))
             {
                 command.Parameters.AddWithValue("@email", email);
                 command.Parameters.AddWithValue("@password", password);
@@ -74,13 +74,13 @@ namespace RepoLayer
                 connect.Close();
                 return false;
             }
-        }
+        }//EoM
 
 
         public async Task<List<Products>> GetAllProductsAsync(int productamount)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"SELECT ProductID, ProductName, ProductColor, ProductAmount, ProductPrice, ProductSize FROM Products", connect))
+            using (SqlCommand command = new SqlCommand($"SELECT ProductID, ProductName, ProductColor, ProductAmount, ProductPrice, ProductSize FROM p2.products", connect))
             {
 
                 connect.Open(); //Open connection
@@ -94,7 +94,7 @@ namespace RepoLayer
                 connect.Close();
                 return pList;
             }
-        }
+        }//EoM
 
         //UpdateCart (tricky)
 
@@ -104,7 +104,7 @@ namespace RepoLayer
         public async Task<List<Orders>> GetPreviousOrdersAsync(string FK_accountID)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"SELECT OrderID, FK_CartID, FK_AccountID, OrderDate, OrderAmount FROM Orders WHERE FK_AccountID = @fk_accountID", connect))
+            using (SqlCommand command = new SqlCommand($"SELECT OrderID, ProductId, AccountID, OrderDate, OrderAmount FROM Orders WHERE FK_AccountID = @fk_accountID", connect))
             {
                 command.Parameters.AddWithValue("@fk_accountID", FK_accountID);
                 connect.Open(); //Open connection
@@ -118,7 +118,7 @@ namespace RepoLayer
                 connect.Close();
                 return oList;
             }
-        }
+        }//EoM
 
 
         //User Profile? (does this need to be a thing in the repo layer?)
@@ -176,51 +176,6 @@ namespace RepoLayer
                     connect.Close();
                     return null;
                 }
-
-            } //EoM
-
-          //ticket method that checks the status for all existing tickets.    
-        public async Task<List<Products>> GetAllProductsAsync(int status)
-            {
-                SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-                using (SqlCommand command = new SqlCommand("SELECT ProductName, ProductColor, ProductPrice, ProductSize FROM p2.products WHERE ProductId = @p", connect))
-                {
-                    command.Parameters.AddWithValue("@stat", status);
-                    connect.Open();
-                    SqlDataReader ret = await command.ExecuteReaderAsync();
-                    List<Products> listtickets = new List<Products>();
-
-                    while(ret.Read())
-                    {
-                        var t = new Products(ret.GetGuid(0), ret.GetString(1), ret.GetString(2), ret.GetInt32(3), ret.GetDecimal(4), ret.GetInt16(5));
-                        listtickets.Add(t);
-                    }
-                        connect.Close();
-                        return listtickets;
-                }
-
-            }//EoM
-
-            //TODO -Mikael- Finish the view past orders => figure out the error on line 96
-        public async Task<Orders> GetPreviousOrdersAsync(int status)
-        {
-            SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand("SELECT * FROM p2.Orders WHERE AccountId = @a", connect))
-                {
-                    command.Parameters.AddWithValue("@a", status);
-                    connect.Open();
-                    SqlDataReader ret = await command.ExecuteReaderAsync();
-                    List<Orders> prevorders = new List<Orders>();
-
-                    while(ret.Read())
-                    {
-                        var t = new Orders(ret.GetGuid(0), ret.GetGuid(1), ret.GetGuid(2), ret.GetDateTime(3), ret.GetInt32(4));
-                        prevorders.Add(t);
-                    }
-                        connect.Close();
-                        return prevorders;
-                }
-        }
         **/
 
 
