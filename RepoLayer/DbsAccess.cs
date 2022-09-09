@@ -15,7 +15,7 @@ namespace RepoLayer
         public async Task<bool> RegisterUserAsync(Guid accountID, string firstName, string lastName, bool isAdmin, string email, string password, string address)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"INSERT INTO p2.Accounts (AccountID, FName, LName, IsAdmin, Email, Password, Address) VALUES (@accountID, @firstname, @lastname, 0, @email, @password, @address)", connect))// The 0 means all new accounts are employees by default
+            using (SqlCommand command = new SqlCommand($"INSERT INTO shop.Accounts (AccountId, FName, LName, IsAdmin, Email, Password, Address) VALUES (@accountID, @firstname, @lastname, 0, @email, @password, @address)", connect))// The 0 means all new accounts are employees by default
             {
                 command.Parameters.AddWithValue("@accountID", accountID);
                 command.Parameters.AddWithValue("@firstname", firstName);
@@ -40,7 +40,7 @@ namespace RepoLayer
         public async Task<bool> DoesUsernameAlreadyExistAsync(string email)//Made purely to get a 'yes' or 'no' value before the SQL query for program to know when to stop or continue in the IF statements
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"SELECT Email FROM p2.Accounts WHERE Email = @email", connect))
+            using (SqlCommand command = new SqlCommand($"SELECT Email FROM shop.Accounts WHERE Email = @email", connect))
             {
                 command.Parameters.AddWithValue("@email", email);
                 connect.Open();
@@ -59,7 +59,7 @@ namespace RepoLayer
         public async Task<bool> LoginAsync(string email, string password)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"SELECT Email FROM p2.Accounts WHERE Email = @email AND Password = @password", connect))
+            using (SqlCommand command = new SqlCommand($"SELECT Email FROM shop.Accounts WHERE Email = @email AND Password = @password", connect))
             {
                 command.Parameters.AddWithValue("@email", email);
                 command.Parameters.AddWithValue("@password", password);
@@ -80,7 +80,7 @@ namespace RepoLayer
         public async Task<List<Products>> GetAllProductsAsync(int productamount)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"SELECT ProductID, ProductName, ProductColor, ProductAmount, ProductPrice, ProductSize FROM p2.products", connect))
+            using (SqlCommand command = new SqlCommand($"SELECT ProductId, ProductName, ProductColor, ProductAmount, ProductPrice, ProductSize FROM shop.products", connect))
             {
 
                 connect.Open(); //Open connection
@@ -104,7 +104,7 @@ namespace RepoLayer
         public async Task<List<Orders>> GetPreviousOrdersAsync(string FK_accountID)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mjrevatureserver.database.windows.net,1433;Initial Catalog=mjaworskiproject1;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"SELECT OrderID, ProductId, AccountID, OrderDate, OrderAmount FROM Orders WHERE FK_AccountID = @fk_accountID", connect))
+            using (SqlCommand command = new SqlCommand($"SELECT OrderId, FK_AccountId, OrderDate, OrderAmount, OrderTotal FROM shop.Orders WHERE FK_AccountId = @fk_accountID", connect))
             {
                 command.Parameters.AddWithValue("@fk_accountID", FK_accountID);
                 connect.Open(); //Open connection
@@ -112,7 +112,7 @@ namespace RepoLayer
                 List<Orders> oList = new List<Orders>();//Output is a list so make a list and put stuff in it
                 while (ret.Read())
                 {
-                    Orders o = new Orders((Guid)ret[0], (Guid)ret[1], (Guid)ret[2], ret.GetDateTime(3), ret.GetInt32(4));//Similar to SQL Inserting values after creating tables
+                    Orders o = new Orders((Guid)ret[0], (Guid)ret[1], ret.GetDateTime(2), ret.GetInt32(3), ret.GetDecimal(4));//Similar to SQL Inserting values after creating tables
                     oList.Add(o);
                 }
                 connect.Close();
@@ -122,6 +122,12 @@ namespace RepoLayer
 
 
         //User Profile? (does this need to be a thing in the repo layer?)
+
+        // *Mikael Response=> I would think so. It's function is meant to update information in the database.
+        // It should take the user's updates that were stored locally and then send in the information the db
+        // in the form of a SQL Query. It would just be an:
+        //                                          "UPDATE shop.Account"
+        //                                          "SET <columnname> = <value>,... WHERE condition"
 
 
 
