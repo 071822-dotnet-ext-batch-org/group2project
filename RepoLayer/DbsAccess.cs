@@ -119,8 +119,27 @@ namespace RepoLayer
                 return oList;
             }
         }//EoM
+    public async Task<List<Cart>> CartDTOAsync(Guid OrderID, Guid ProductID)
+        {
+            SqlConnection connect = new SqlConnection("Server=tcp:mikael-sean-jon-project2.database.windows.net,1433;Initial Catalog=mikael-sean-jon-project2;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            using (SqlCommand command = new SqlCommand($"INSERT INTO Shop.Junctable (FK_OrderId, FK_ProductId) VALUES (@OrderID, @ProductID)", connect))
+            {
+                command.Parameters.AddWithValue("@OrderID", OrderID);
+                command.Parameters.AddWithValue("@ProductID", ProductID);
+                connect.Open();
+                SqlDataReader retu = await command.ExecuteReaderAsync();
+                List<Cart> OrdList = new List<Cart>();
+                while (retu.Read())
+                {
+                    Cart Ord = new Cart((Guid)retu[0], (Guid)retu[1]);
+                    OrdList.Add(Ord);
+                }
+                connect.Close();
+                return OrdList;
+            }
 
 
+        }
         //User Profile? (does this need to be a thing in the repo layer?)
 
         // *Mikael Response=> I would think so. It's function is meant to update information in the database.
