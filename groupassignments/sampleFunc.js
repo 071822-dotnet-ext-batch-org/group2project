@@ -6,9 +6,15 @@ let myVar1 = 'Bungee';
 
 let myVar2 = 2;
 
-let myVar3 = console.log(connectedFile.myFunc(`${myVar1}`, myVar2));
+let myVar3 = connectedFile.myFunc(myVar1, myVar2);
 
-fs.writeFileSync('./ReadMe.txt', `${myVar3}`);
+fs.writeFileSync('./ReadMe.txt', myVar3);
+
+fs.appendFileSync('./ReadMe.txt', '');
+
+let myVar4 = fs.readFileSync('./ReadMe.txt');
+
+console.log(myVar4.toString)
 
 
 /**
