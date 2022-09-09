@@ -1,0 +1,11 @@
+{
+  "name": "node-assignment-g2",
+  "version": "1.0.0",
+  "description": "mark wanted us to do node stuff",
+  "main": "sampleFunc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "group2",
+  "license": "ISC"
+}
