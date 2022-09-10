@@ -60,5 +60,59 @@ namespace ApiLayer.Controllers
         }
 
 
+        [HttpPost("TheCart")]
+        public async Task<List<Cart>> CartDTOAsync(Guid orderID, Guid fK_ProductID)
+        {
+            List<Cart> CartItems = await this._businessLayer.CartDTOAsync(orderID, fK_ProductID);
+            return CartItems;
+        }
+
+
+        [HttpPost("Checkout")]
+        public async Task<ActionResult> CheckoutAsync(string productID, int orderAmount)
+        {
+            bool CheckedOut = await this._businessLayer.CheckoutAsync(productID, orderAmount);
+            return Ok(CheckedOut);
+        }
+
+
+        [HttpPut("ResetPassword")]
+        public async Task<ActionResult> ResetAsync(string email, string password)
+        {
+            bool SuccessfullReset = await this._businessLayer.ResetAsync(email, password);
+            return Ok(SuccessfullReset);
+        }
+
+        
+        [HttpPost("CreateProduct")]
+        public async Task<ActionResult> CreateProductAsync(Guid accountID, Guid productID, string productName, string productColor, int productAmount, decimal productPrice, int productSize)
+        {
+            bool ProductCreated = await this._businessLayer.CreateProductAsync(accountID, productID, productName, productColor, productAmount, productPrice, productSize);
+            return Ok(ProductCreated);
+        }
+
+       
+        [HttpPut("UpdateProduct")]
+        public async Task<ActionResult> UpdateProductAsync(Guid accountID, Guid productID, string productName, string productColor, int productAmount, decimal productPrice, int productSize)
+        {
+            bool ProductUpdated = await this._businessLayer.UpdateProductAsync(accountID, productID, productName, productColor, productAmount, productPrice, productSize);
+            return Ok(ProductUpdated);
+        }
+
+
+        [HttpGet("IsAccountAdmin")]
+        public async Task<ActionResult> IsAccountAdminAsync(Guid accountID)
+        {
+            bool IsAccountAdmin = await this._businessLayer.IsAccountAdminAsync(accountID);
+            return Ok(IsAccountAdmin);
+        }
+
+
+
+
+
+
+
+
     }
 }

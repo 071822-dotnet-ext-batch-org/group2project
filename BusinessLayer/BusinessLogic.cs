@@ -47,5 +47,51 @@ namespace BusinessLayer
             return olist;
         }
 
+
+        public async Task<List<Cart>> CartDTOAsync(Guid orderID, Guid fK_ProductID)
+        {
+            List<Cart> ItemsCartList = await this._repoLayer.CartDTOAsync(orderID, fK_ProductID);
+            return ItemsCartList;
+        }
+
+
+        public async Task<bool> CheckoutAsync(string productID, int orderAmount)
+        {
+            bool CheckedOut = await this._repoLayer.CheckoutAsync(productID, orderAmount);
+            return CheckedOut;
+        }
+
+
+        public async Task<bool> ResetAsync(string email, string password)
+        {
+            bool SuccessfullReset = await this._repoLayer.ResetAsync(email, password);
+            return SuccessfullReset;
+        }
+
+        public async Task<bool> CreateProductAsync(Guid accountID, Guid productID, string productName, string productColor, int productAmount, decimal productPrice, int productSize)
+        {
+            bool ProductCreated = await this._repoLayer.CreateProductAsync(accountID, productID, productName, productColor, productAmount, productPrice, productSize);
+            return ProductCreated;
+        }
+
+        public async Task<bool> UpdateProductAsync(Guid accountID, Guid productID, string productName, string productColor, int productAmount, decimal productPrice, int productSize)
+        {
+            bool ProductUpdated = await this._repoLayer.UpdateProductAsync(accountID, productID, productName, productColor, productAmount, productPrice, productSize);
+            return ProductUpdated;
+        }
+
+
+        public async Task<bool> IsAccountAdminAsync(Guid accountID)
+        {
+            bool IsAccountAdmin = await this._repoLayer.IsAccountAdminAsync(accountID);
+            return IsAccountAdmin;
+        }
+
+
+
+
+
+
+
     }
 }
