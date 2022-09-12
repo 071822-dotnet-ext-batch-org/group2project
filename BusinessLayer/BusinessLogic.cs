@@ -47,8 +47,7 @@ namespace BusinessLayer
             return olist;
         }
 
-
-        public async Task<List<Cart>> CartDTOAsync(Guid orderID, Guid fK_ProductID)
+public async Task<List<Cart>> CartDTOAsync(Guid orderID, Guid fK_ProductID)
         {
             List<Cart> ItemsCartList = await this._repoLayer.CartDTOAsync(orderID, fK_ProductID);
             return ItemsCartList;
@@ -86,12 +85,6 @@ namespace BusinessLayer
             bool IsAccountAdmin = await this._repoLayer.IsAccountAdminAsync(accountID);
             return IsAccountAdmin;
         }
-
-
-
-
-
-
 
     }
 }

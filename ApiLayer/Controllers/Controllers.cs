@@ -43,6 +43,13 @@ namespace ApiLayer.Controllers
             return Ok(SuccessfullLogin);
         }
 
+        [HttpPost("TheCart")]
+        public async Task<List<Cart>> CartDTOAsync(Guid orderID, Guid fK_ProductID)
+        {
+            List<Cart> CartItems = await this._businessLayer.CartDTOAsync(orderID, fK_ProductID);
+                return CartItems;
+        }
+
 
         [HttpGet("DisplayAllProducts")]
         public async Task<List<Products>> GetAllProductsAsync(int ProductAmount)

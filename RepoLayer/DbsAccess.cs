@@ -121,8 +121,6 @@ namespace RepoLayer
                 return oList;
             }
         }//EoM
-
-
         public async Task<List<Cart>> CartDTOAsync(Guid OrderID, Guid ProductID)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mikael-sean-jon-project2.database.windows.net,1433;Initial Catalog=mikael-sean-jon-project2;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
@@ -143,8 +141,7 @@ namespace RepoLayer
             }
 
         }
-
-
+        //User Profile? (does this need to be a thing in the repo layer?)
 
         public async Task<bool> CheckoutAsync(string productID, int orderAmount)
         {
