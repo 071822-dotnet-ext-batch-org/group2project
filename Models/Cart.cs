@@ -14,5 +14,7 @@ namespace Models
             FK_productID = FK_ProductID;
         }
         
-        public Guid orderID { get; set; }
+               public Guid orderID { get; set; }
         public Guid FK_productID { get; set; }
+    }
+}
