@@ -8,23 +8,21 @@ namespace Models
 {
     public class Accounts
     {
-        public Accounts(Guid AccountID, string FirstName, string LastName, bool IsAdmin, string Email, string Password, string Address)
+        public Accounts(string Email, string Password, string FirstName, string LastName, string Address, bool IsAdmin)
         {
-            accountID = AccountID;
-            firstName = FirstName;
-            lastName = LastName;
-            isAdmin = IsAdmin;
             email = Email;
             password = Password;
-            address = Address; 
+            firstName = FirstName;
+            lastName = LastName;
+            address = Address;
+            isAdmin = IsAdmin;
         }
 
-        public Guid accountID { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public bool isAdmin { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
         public string address { get; set; }
+        public bool isAdmin { get; set; }
     }
 }

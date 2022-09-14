@@ -8,13 +8,18 @@ namespace Models
 {
     public class Cart
     {
-        public Cart(Guid OrderID, Guid FK_ProductID)
+        public Cart(int CartID, string FK_Email, string FK_ProductName, int OrderAmount, Decimal Subtotal)
         {
-            orderID = OrderID;
-            FK_productID = FK_ProductID;
+            cartID = CartID;
+            FK_email = FK_Email;
+            FK_productName = FK_ProductName;
+            orderAmount = OrderAmount;
+            subtotal = Subtotal;
         }
-        
-               public Guid orderID { get; set; }
-        public Guid FK_productID { get; set; }
+        public int cartID { get; set; }
+        public string FK_email { get; set; }
+        public string FK_productName { get; set; }
+        public int orderAmount { get; set; }
+        public Decimal subtotal { get; set; }
     }
 }

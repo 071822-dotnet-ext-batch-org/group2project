@@ -8,19 +8,23 @@ namespace Models
 {
     public class Orders
     {
-        public Orders(Guid OrderID, Guid FK_AccountID, DateTime OrderDate, Int32 OrderAmount, Decimal OrderTotal)
+        public Orders(int OrderID, int FK_CartID, string FK_Email, string FK_ProductName, int OrderAmount, Decimal Subtotal,  DateTime OrderDate)
         {
             orderID = OrderID;
-            FK_accountID = FK_AccountID;
-            orderDate = OrderDate;
+            FK_cartID = FK_CartID;
+            FK_email = FK_Email;
+            FK_productName = FK_ProductName;
             orderAmount = OrderAmount;
-            orderTotal = OrderTotal;
+            subtotal = Subtotal;
+            orderDate = OrderDate;
         }
 
-        public Guid orderID { get; set; }
-        public Guid FK_accountID { get; set; }
+        public int orderID { get; set; }
+        public int FK_cartID { get; set; }
+        public string FK_email { get; set; }
+        public string FK_productName { get; set; }
+        public decimal orderAmount { get; set; }
+        public Decimal subtotal { get; set; }
         public DateTime orderDate { get; set; }
-        public Int32 orderAmount { get; set; }
-        public Decimal orderTotal { get; set; }
     }
 }
