@@ -1,0 +1,110 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http'
+
+  //Models Imports
+    import { AddToCart } from '../Ang-Models/Add To Cart';
+    import { Checkout } from '../Ang-Models/Checkout';
+    import { CreateProduct } from '../Ang-Models/Create Product';
+    import { CreateUserProfile } from '../Ang-Models/Create User Profile';
+    import { DisplayAllProducts } from '../Ang-Models/Display All Products'; 
+    import { DoesUsernameAlreadyExists } from '../Ang-Models/Does Username Exist Already';
+    import { EditProfile } from '../Ang-Models/Edit Profile';
+    import { IsAccountAdmin } from '../Ang-Models/Is Account Admin';
+    import { Login } from '../Ang-Models/Login';
+    import { ProceedAsGuest } from '../Ang-Models/Proceed As Guest';
+    import { RegisterUser } from '../Ang-Models/Register User';
+    import { RemoveFromCart } from '../Ang-Models/Remove From Cart';
+    import { UpdateProducts } from '../Ang-Models/Update Products';
+    import { ViewPreviousOrders } from '../Ang-Models/View Previous Orders';
+    import { AngServiceService } from './ang-service.service';
+    import { ResetPassword } from '../Ang-Models/Reset Password';
+
+
+@Injectable({
+  providedIn: 'root'
+}) 
+
+export class AngularService{
+
+  private apiUrl = 'https://localhost:7205'
+
+  constructor(private http: HttpClient) { }
+
+  public async postLogin(login: Login): Promise<Observable<Login>>
+  {
+    return this.http.post<Login>(this.apiUrl, login);
+  }
+
+  public async postRegisterUser(registeruser: RegisterUser): Promise<Observable<RegisterUser>>
+  {
+    return this.http.post<RegisterUser>(this.apiUrl, registeruser);
+  }
+
+  public async postProceedAsGuest(guestaccount: ProceedAsGuest): Promise<Observable<ProceedAsGuest>>
+  {
+    return this.http.post<ProceedAsGuest>(this.apiUrl, guestaccount);
+  }
+
+  public async putResetPassword(resetpassword: ResetPassword): Promise<Observable<ResetPassword>>
+  {
+    return this.http.put<ResetPassword>(this.apiUrl, resetpassword)
+  }
+
+  public async getCreateUserProfile(): Promise<Observable<CreateUserProfile>>
+  {
+    return this.http.get<CreateUserProfile>(this.apiUrl + "/Create User Profile");
+  }
+
+  public async putEditProfile(editprofile: EditProfile): Promise<Observable<EditProfile>>
+  {
+    return this.http.put<EditProfile>(this.apiUrl, editprofile);
+  }
+
+  public async getAllProducts(): Promise<Observable<DisplayAllProducts>>
+  {
+    return this.http.get<DisplayAllProducts>(this.apiUrl + "/Display All Products");
+  }
+
+  public async postNewProduct(createproduct: CreateProduct): Promise<Observable<CreateProduct>>
+  {
+    return this.http.post<CreateProduct>(this.apiUrl, createproduct);
+  }
+
+  public async putUpdateProduct(updateproduct: UpdateProducts): Promise<Observable<UpdateProducts>>
+  {
+    return this.http.put<UpdateProducts>(this.apiUrl, updateproduct);
+  }
+
+  public async postAddToCart(addproduct: AddToCart): Promise<Observable<AddToCart>>
+  {
+    return this.http.post<AddToCart>(this.apiUrl, addproduct);
+  }
+
+  public async putRemoveFromCart(removeproduct: RemoveFromCart): Promise<Observable<RemoveFromCart>>
+  {
+    return this.http.put<RemoveFromCart>(this.apiUrl, removeproduct);
+  }
+
+  public async postCheckout(checkout: Checkout): Promise<Observable<Checkout>>
+  {
+    return this.http.post<Checkout>(this.apiUrl, checkout);
+  }
+
+  public async getPreviousOrders(): Promise<Observable<ViewPreviousOrders>>
+  {
+    return this.http.get<ViewPreviousOrders>(this.apiUrl + "/View Previous Orders");
+  }
+
+  public async getUsername(): Promise<Observable<DoesUsernameAlreadyExists>>
+  {
+    return this.http.get<DoesUsernameAlreadyExists>(this.apiUrl + "/ Does Username Exist Already");
+  }
+
+  public async getAdminAccount(): Promise<Observable<IsAccountAdmin>>
+  {
+    return this.http.get<IsAccountAdmin>(this.apiUrl + "/Is Account Admin");
+  }
+
+}
+
