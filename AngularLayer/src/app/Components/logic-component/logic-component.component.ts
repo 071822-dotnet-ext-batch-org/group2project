@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularService } from '../services/ang-service.service.spec';
+import { AngularService } from 'src/app/services/ang-service.service.spec';
 
 @Component({
   selector: 'app-logic-component',
