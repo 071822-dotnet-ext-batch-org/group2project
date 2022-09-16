@@ -3,22 +3,22 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
 
   //Models Imports
-    import { AddToCart } from '../Ang-Models/Add To Cart';
-    import { Checkout } from '../Ang-Models/Checkout';
-    import { CreateProduct } from '../Ang-Models/Create Product';
-    import { CreateUserProfile } from '../Ang-Models/Create User Profile';
-    import { DisplayAllProducts } from '../Ang-Models/Display All Products'; 
-    import { DoesUsernameAlreadyExists } from '../Ang-Models/Does Username Exist Already';
-    import { EditProfile } from '../Ang-Models/Edit Profile';
-    import { IsAccountAdmin } from '../Ang-Models/Is Account Admin';
-    import { Login } from '../Ang-Models/Login';
-    import { ProceedAsGuest } from '../Ang-Models/Proceed As Guest';
-    import { RegisterUser } from '../Ang-Models/Register User';
-    import { RemoveFromCart } from '../Ang-Models/Remove From Cart';
-    import { UpdateProducts } from '../Ang-Models/Update Products';
-    import { ViewPreviousOrders } from '../Ang-Models/View Previous Orders';
+    import { AddToCart } from '../Models/Add To Cart';
+    import { Checkout } from '../Models/Checkout';
+    import { CreateProduct } from '../Models/Create Product';
+    import { CreateUserProfile } from '../Models/Create User Profile';
+    import { DisplayAllProducts } from '../Models/Display All Products'; 
+    import { DoesUsernameAlreadyExists } from '../Models/Does Username Exist Already';
+    import { EditProfile } from '../Models/Edit Profile';
+    import { IsAccountAdmin } from '../Models/Is Account Admin';
+    import { Login } from '../Models/Login';
+    import { ProceedAsGuest } from '../Models/Proceed As Guest';
+    import { RegisterUser } from '../Models/Register User';
+    import { RemoveFromCart } from '../Models/Remove From Cart';
+    import { UpdateProducts } from '../Models/Update Products';
+    import { ViewPreviousOrders } from '../Models/View Previous Orders';
     import { AngServiceService } from './ang-service.service';
-    import { ResetPassword } from '../Ang-Models/Reset Password';
+    import { ResetPassword } from '../Models/Reset Password';
 
 
 @Injectable({
@@ -61,9 +61,9 @@ export class AngularService{
     return this.http.put<EditProfile>(this.apiUrl, editprofile);
   }
 
-  public async getAllProducts(): Promise<Observable<DisplayAllProducts>>
+  public async getAllProducts(): Promise<Observable<DisplayAllProducts[]>>
   {
-    return this.http.get<DisplayAllProducts>(this.apiUrl + "/Display All Products");
+    return this.http.get<DisplayAllProducts[]>(this.apiUrl + "/Display All Products");
   }
 
   public async postNewProduct(createproduct: CreateProduct): Promise<Observable<CreateProduct>>
@@ -91,9 +91,9 @@ export class AngularService{
     return this.http.post<Checkout>(this.apiUrl, checkout);
   }
 
-  public async getPreviousOrders(): Promise<Observable<ViewPreviousOrders>>
+  public async getPreviousOrders(): Promise<Observable<ViewPreviousOrders[]>>
   {
-    return this.http.get<ViewPreviousOrders>(this.apiUrl + "/View Previous Orders");
+    return this.http.get<ViewPreviousOrders[]>(this.apiUrl + "/View Previous Orders");
   }
 
   public async getUsername(): Promise<Observable<DoesUsernameAlreadyExists>>

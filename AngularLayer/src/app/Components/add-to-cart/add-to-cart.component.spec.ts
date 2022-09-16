@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LogicComponentComponent } from './logic-component.component';
+import { AddToCartComponent } from './add-to-cart.component';
 
-describe('LogicComponentComponent', () => {
-  let component: LogicComponentComponent;
-  let fixture: ComponentFixture<LogicComponentComponent>;
+describe('AddToCartComponent', () => {
+  let component: AddToCartComponent;
+  let fixture: ComponentFixture<AddToCartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LogicComponentComponent ]
+      declarations: [ AddToCartComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LogicComponentComponent);
+    fixture = TestBed.createComponent(AddToCartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
