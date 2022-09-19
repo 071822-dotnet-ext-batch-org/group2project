@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel = "stylesheet" href="login.component.css"/>
-</head>
-<h1 class="welcome">Welcome</h1>
-<body>
     <div class="box">
         <h1 class="logintxt">Sign In</h1>
-        <form method="post">
+        <form method="get" (ngLogin)="Login()">
             <div class="txt_field">
                 <input type="email" required>
                 <span></span>
@@ -26,7 +15,8 @@
                 <a routerLink="/reset_password" routerLinkActive="active">Forgot Password?</a>
             </div>
             <div class="login_button">
-                    <a (click)="Login()" routerLink="/display" routerLinkActive="active">Sign In</a >    
+                    <button type="submit">Sign In</button>
+                    <a routerLink="/display" routerLinkActive="active">Sign In</a >    
             </div>
           
             <div class="signup_link">
@@ -37,5 +27,3 @@
             </div>
         </form>
     </div>
-</body>
-</html>

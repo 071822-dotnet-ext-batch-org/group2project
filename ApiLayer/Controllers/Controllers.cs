@@ -19,7 +19,7 @@ namespace ApiLayer.Controllers
 
 
 
-        [HttpPost("Login")]
+        [HttpGet("Login")]
         public async Task<ActionResult> LoginAsync(string email, string password)
         {
             bool SuccessfullLogin = await this._businessLayer.LoginAsync(email, password);
@@ -28,9 +28,9 @@ namespace ApiLayer.Controllers
 
 
         [HttpPost("RegisterUser")]
-        public async Task<ActionResult> RegisterUserAsync(string email, string password, string firstName, string lastName, string address, bool isAdmin)
+        public async Task<ActionResult> RegisterUserAsync(string email, string password, string firstName, string lastName, string address)
         {
-            bool SuccessfullyRegistered = await this._businessLayer.RegisterUserAsync(email, password, firstName, lastName, address, isAdmin);
+            bool SuccessfullyRegistered = await this._businessLayer.RegisterUserAsync(email, password, firstName, lastName, address);
             return Ok(SuccessfullyRegistered);
         }
 

@@ -4,5 +4,4 @@ export interface RegisterUser{
     firstName: string,
     lastName: string,
     address: string,
-    isAdmin: boolean;
 }

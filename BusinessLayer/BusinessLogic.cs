@@ -20,9 +20,9 @@ namespace BusinessLayer
         }
 
 
-        public async Task<bool> RegisterUserAsync(string email, string password, string firstName, string lastName, string address, bool isAdmin)
+        public async Task<bool> RegisterUserAsync(string email, string password, string firstName, string lastName, string address)
         {
-            bool SuccessfullyRegistered = await this._repoLayer.RegisterUserAsync(email, password, firstName, lastName, address, isAdmin);
+            bool SuccessfullyRegistered = await this._repoLayer.RegisterUserAsync(email, password, firstName, lastName, address);
             return SuccessfullyRegistered;
         }
 

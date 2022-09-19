@@ -38,9 +38,9 @@ export class AngularService{
     return this.http.get("https://jsonplaceholder.typicode.com/todos/1")
   }
 
-  public async postLogin(login: Login): Promise<Observable<Login>>
+  public async getLogin(): Promise<Observable<Login>>
   {
-    return this.http.post<Login>(this.apiUrl, login);
+    return this.http.get<Login>(this.apiUrl + "/Login");
   }
 
   public async postRegisterUser(registeruser: RegisterUser): Promise<Observable<RegisterUser>>

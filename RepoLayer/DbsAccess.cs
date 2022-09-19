@@ -35,17 +35,16 @@ namespace RepoLayer
         }
 
 
-        public async Task<bool> RegisterUserAsync(string email, string password, string firstName, string lastName, string address, bool isAdmin)
+        public async Task<bool> RegisterUserAsync(string email, string password, string firstName, string lastName, string address)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:mikael-sean-jon-project2.database.windows.net,1433;Initial Catalog=mikael-sean-jon-project2;Persist Security Info=False;User ID=master;Password=REVATURubie$235;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"INSERT INTO shop.Accounts (Email, Password, FName, LName, Address, IsAdmin) VALUES (@email, @password, @firstname, @lastname, @address, @isAdmin)", connect))
+            using (SqlCommand command = new SqlCommand($"INSERT INTO shop.Accounts (Email, Password, FName, LName, Address, IsAdmin) VALUES (@email, @password, @firstname, @lastname, @address, 0)", connect))
             {
                 command.Parameters.AddWithValue("@email", email);
                 command.Parameters.AddWithValue("@password", password);
                 command.Parameters.AddWithValue("@firstname", firstName);
                 command.Parameters.AddWithValue("@lastname", lastName);
                 command.Parameters.AddWithValue("@address", address);
-                command.Parameters.AddWithValue("@isAdmin", isAdmin);
                 connect.Open();
 
                 bool DoesUsernameExist = await this.DoesUsernameAlreadyExistAsync(email); //Use a method in the repo layer to do a 'yes' or 'no' check if username already exists

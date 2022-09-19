@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   Login()
   {
-    this.AR.postLogin(this.login).then(data => {
+    this.AR.getLogin().then(data => {
       this.login = data;
     })
   }
