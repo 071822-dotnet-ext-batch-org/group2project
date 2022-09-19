@@ -20,6 +20,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { ProceedAsGuestComponent } from './Components/proceed-as-guest/proceed-as-guest.component';
 import { RegisterUserComponent } from './Components/register-user/register-user.component';
 import { RemoveFromCartComponent } from './Components/remove-from-cart/remove-from-cart.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { UpdateProductComponent } from './Components/update-product/update-product.component';
 import { ViewPreviousOrdersComponent } from './Components/view-previous-orders/view-previous-orders.component';
 import { WelcomePageComponent } from './Components/welcome-page/welcome-page.component';
@@ -38,7 +39,7 @@ const routes: Routes = [
   {path: 'proceed_as_guest', component: ProceedAsGuestComponent },
   {path: 'register_user', component: RegisterUserComponent },
   {path: 'remove_from_cart', component: RemoveFromCartComponent },
-  {path: 'reset_password', component: RemoveFromCartComponent },
+  {path: 'reset_password', component: ResetPasswordComponent },
   {path: 'update', component:UpdateProductComponent },
   {path: 'view_previous_orders', component: ViewPreviousOrdersComponent },
   {path: 'black', component: BlackComponent },
