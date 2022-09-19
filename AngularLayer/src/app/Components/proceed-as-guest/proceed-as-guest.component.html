@@ -18,7 +18,7 @@
                 <label>Address</label>
             </div>
             <div class="login_button">
-                    <a onclick="(ProceedAsGuest)" routerLink="/display" routerLinkActive="active">Let's Get Going!</a>      
+                    <a (click)="ProceedAsGuest()" *ngIf="ProceedAsGuest != null" routerLink="/display" routerLinkActive="active">Let's Get Going!</a>      
             </div>
           
         </form>

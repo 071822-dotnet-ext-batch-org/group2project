@@ -23,17 +23,17 @@
                 <label>Password</label>
             </div>
             <div class="forgotpass">
-                <a routerLink="/reset password" routerLinkActive="active">Forgot Password?</a>
+                <a routerLink="/reset_password" routerLinkActive="active">Forgot Password?</a>
             </div>
             <div class="login_button">
-                    <a onclick="(Login)" routerLink="/display" routerLinkActive="active">Sign In</a >    
+                    <a (click)="Login()" routerLink="/display" routerLinkActive="active">Sign In</a >    
             </div>
           
             <div class="signup_link">
-                Don't Have An Account? <a routerLink="/register user" routerLinkActive="active">Sign Up</a>
+                Don't Have An Account? <a routerLink="/register_user" routerLinkActive="active">Sign Up</a>
             </div>
             <div class="guest_link">
-                Don't want to sign up? <a routerLink="/proceed as guest" routerLinkActive="active">Proceed As Guest</a>
+                Don't want to sign up? <a routerLink="/proceed_as_guest" routerLinkActive="active">Proceed As Guest</a>
             </div>
         </form>
     </div>
