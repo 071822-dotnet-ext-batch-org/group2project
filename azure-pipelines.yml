@@ -38,7 +38,7 @@ stages:
         checkLatest: true
     - task: SonarCloudPrepare@1
       inputs:
-        SonarCloud: 'Sonaircloud connection'
+        SonarCloud: 'Sonarcloud connection'
         organization: 
         scannerMode: 'MSBuild'
         # projectKey: 
