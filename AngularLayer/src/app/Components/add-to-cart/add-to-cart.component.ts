@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularService } from 'src/app/services/ang-service.service.spec';
+import { AngularService } from 'src/app/services/ang-service.service';
 
 @Component({
   selector: 'app-add-to-cart',
@@ -9,15 +9,15 @@ import { AngularService } from 'src/app/services/ang-service.service.spec';
 export class AddToCartComponent implements OnInit {
 
   addproduct: any;
-  constructor(private AR: AngularService) { }
-
+  constructor() { }
+  // private AR: AngularService
   ngOnInit(): void {
   }
 
   AddToCart()
   {
-    this.AR.postAddToCart(this.addproduct).then(data => {
-      this.addproduct = data;
-    })
+    // this.AR.postAddToCart(this.addproduct).then(data => {
+    //   this.addproduct = data;
+    // })
   }
 }
