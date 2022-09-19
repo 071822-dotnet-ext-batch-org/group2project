@@ -28,11 +28,15 @@ import { CreateUserProfileComponent } from '../Components/create-user-profile/cr
 
 export class AngularService{
 
-  private apiUrl = 'https://localhost:7205'
+  private apiUrl = 'https://localhost:7205/swagger/index.html'
 
   newProduct: Product [] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+
+  public apiCall(){
+    return this.http.get("https://jsonplaceholder.typicode.com/todos/1")
+  }
 
   public async postLogin(login: Login): Promise<Observable<Login>>
   {
