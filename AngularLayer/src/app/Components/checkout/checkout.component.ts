@@ -11,15 +11,8 @@ import { CreateProductComponent } from '../create-product/create-product.compone
 export class CheckoutComponent implements OnInit {
   
   checkout = this.AR.getItems();
-  profile = this.AR.getCreateUserProfile();
-  logProf = console.log(this.profile);
-  // logOrder(email = "logProf.Email", cartID = "logProf.Password" , productName = "checkout.name", orderAmount = "orderAmount.price" ){
-  //   email = this.logProf
-  //   cartID
-  //   productName
-  //   orderAmount
-  // }
-  orderSubmit: Checkout | undefined; 
+
+  orderSubmit: any; 
 
   constructor(private AR: AngularService) { }
 
@@ -32,9 +25,11 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // Checkout(orderSubmit: Checkout)
-  // {
-  //       this.AR.postCheckout(this.orderSubmit= {email, cartID, productName, orderAmount})
-  // }
+  Checkout()
+  {
+    this.AR.postCheckout(this.orderSubmit).then(data => {
+      this.orderSubmit = data;
+    })
+  }
 
 }

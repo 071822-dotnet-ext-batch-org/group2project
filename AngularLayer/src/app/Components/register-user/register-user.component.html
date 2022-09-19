@@ -13,16 +13,6 @@
         <h1 class="logintxt">Type Information Below</h1>
         <form method="post">
             <div class="txt_field">
-                <input type="email" required>
-                <span></span>
-                <label>Email</label>
-            </div>
-            <div class="txt_field">
-                <input type="password" required>
-                <span></span>
-                <label>Password</label>
-            </div>
-            <div class="txt_field">
                 <input type="first_name" required>
                 <span></span>
                 <label>First Name</label>
@@ -37,8 +27,18 @@
                 <span></span>
                 <label>Address</label>
             </div>
+            <div class="txt_field">
+                <input type="email" required>
+                <span></span>
+                <label>Email</label>
+            </div>
+            <div class="txt_field">
+                <input type="password" required>
+                <span></span>
+                <label>Password</label>
+            </div>
             <div class="login_button">
-                    <a href="http://127.0.0.1:5500/FrontEnd/HTML-CSS/Login.html">Sign Up!</a>    
+                    <a onclick="(RegisterUser)" *ngiF="RegisterUser != null" routerLink="/display" routerLinkActive="active">Sign Up!</a>    
             </div>
           
         </form>

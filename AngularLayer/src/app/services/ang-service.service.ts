@@ -19,6 +19,7 @@ import { HttpClient } from '@angular/common/http'
     import { ViewPreviousOrders } from '../Models/View Previous Orders';
     import { ResetPassword } from '../Models/Reset Password';
 import { Product, products } from '../Models/Products';
+import { CreateUserProfileComponent } from '../Components/create-user-profile/create-user-profile.component';
 
 
 @Injectable({

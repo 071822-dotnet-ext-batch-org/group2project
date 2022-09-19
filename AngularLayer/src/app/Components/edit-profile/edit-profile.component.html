@@ -16,21 +16,39 @@
             </div>
         </div>
     </div>
+    <form method="post">
     <div class="profile-box">
         <h1>Profile</h1>
-        <h4><div class="firstname">First Name:</div></h4>
+        <h4><div class="firstname">
+            <input type="first_name" required>
+            <span></span>
+            <label>First Name</label></div></h4>
         <h2></h2>
-        <h4><div class="lastname">Last Name:</div></h4>
+        <h4><div class="lastname">
+            <input type="last_name" required>
+            <span></span>
+            <label>Last Name</label></div></h4>
         <h2></h2>
-        <h4><div class="address">Address:</div></h4>
+        <h4><div class="address">
+            <input type="Address" required>
+            <span></span>
+            <label>Address</label></div></h4>
         <h2></h2>
-        <h4><div class="email">Email:</div></h4>
+        <h4><div class="email">
+            <input type="email" required>
+            <span></span>
+            <label>Email</label></div></h4>
         <h2></h2>
-        <h4><div class="password">Password:</div></h4>
+        <h4><div class="password">
+            <input type="password" required>
+            <span></span>
+            <label>Password</label></div></h4>
         <h2></h2>
         <h4><div class="admin_privilege">Admin Privilege:</div></h4>
         <h2></h2><br>
-        <h2><a routerLink="/create user profile" routerLinkActive="active">Confirm Changes</a></h2>
+        <h2><a onclick="(EditProfile)" routerLink="/create user profile" routerLinkActive="active">Confirm Changes</a></h2>
     </div>
+    </form>
+  
 </body>
 </html>
