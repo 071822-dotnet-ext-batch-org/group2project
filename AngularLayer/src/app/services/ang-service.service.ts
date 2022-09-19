@@ -28,7 +28,7 @@ import { CreateUserProfileComponent } from '../Components/create-user-profile/cr
 
 export class AngularService{
 
-  private apiUrl = 'https://localhost:7205/swagger/index.html'
+  private apiUrl = 'https://localhost:7205/api/Controllers'
 
   newProduct: Product [] = [];
 

@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   {
     this.AR.getLogin().then(data => {
       this.login = data;
+      window.alert('Thank you for logging in! {{}}')
     })
   }
 
