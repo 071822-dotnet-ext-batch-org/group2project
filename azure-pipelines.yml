@@ -10,7 +10,7 @@ trigger:
     - main
   paths:
     include:
-      - EcommerceAPI
+      - ApiLayer
 
 pool:
   vmImage: 'windows-latest'
