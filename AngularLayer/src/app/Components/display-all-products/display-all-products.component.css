@@ -17,6 +17,20 @@ body{
     font-family: 'Quicksand', sans-serif;
 }
 
+.topbar{
+    background: linear-gradient(-45deg,#ba57e9,#4c75e6);
+    overflow: hidden;
+}
+.topbar a{
+    float: right;
+    color: white;
+    text-align: center;
+    padding: 20px 26px;
+    text-decoration: none;
+    font-size: 26px;
+    border-bottom: 2px solid white;
+}
+
 img{
     width: 100%;
     display: block;

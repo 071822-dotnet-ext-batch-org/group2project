@@ -1,3 +1,8 @@
 export interface CreateUserProfile {
-    output: string;
+    Email: string, 
+    Password: string,
+    FName: string,
+    LName: string,
+    Address: string,
+    IsAdmin: string
 }

@@ -11,15 +11,25 @@
     <div class="small-container cart-page">
         <table>
             <tr>
+                <th>Email</th>
+                <th>CartID</th>
                 <th>Product</th>
-                <th>Quantity</th>
                 <th>Subtotal</th>
             </tr>
+            <!-- string email, int cartID, string productName, int orderAmount -->
             <!--Beginning of product-->
             <tr>
+                <form method="post">
+                <td>
+                    <input type="text" required>
+                    <span></span>
+                </td>
+                <td>
+                    <input type="number" value="1">
+                </td>
                 <td>
                     <div class="cart-info" *ngFor="let item of checkout">
-                        <!-- <img src="/AngularLayer/src/app/Models/Images/TealDye.jpg"> -->
+                        <!-- <img src="Images/TealDye.jpg"> -->
                         <div>
                             <p>{{ item.name }}</p>
                             <small>{{ item.price | currency }}</small>
@@ -28,7 +38,7 @@
                         </div>
                     </div>
                 </td>
-                <td><input type="number" value="1"></td>
+                <!-- <td><input type="number" value="1"></td> -->
                 <td *ngFor="let item of checkout">
                     <script>
                         let money = [];
@@ -39,44 +49,11 @@
                         <span> {{ money }} </span>
                       </script>
                 </td>
+                </form>
             </tr>
             <!--End of product-->
-            <!--Beginning of product-->
-            <!-- <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="/AngularLayer/src/app/Models/Images/RedDye.jpg">
-                        <div>
-                            <p>Red Dye</p>
-                            <small>Price: $10.00</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$20.00</td>
-            </tr> -->
-            <!--End of product-->
-            <!--Beginning of product-->
-            <!-- <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="/AngularLayer/src/app/Models/Images/BlackDye.jpg">
-                        <div>
-                            <p>Black Dye</p>
-                            <small>Price: $10.00</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$30.00</td>
-            </tr> -->
-            <!--End of product-->
         </table>
-
+    <div>
         <div class = "total-price">
             <table>
                 <tr>
@@ -93,9 +70,10 @@
                 </tr>
             </table>
         </div>
-        <button class = "button"><a href="http://127.0.0.1:5500/FrontEnd/HTML-CSS/Product.html" target="_self">Proceed to checkout</a></button>
-    </div>    
-    
-</body>
-    
+        <button class = "button">
+        <a onclick="(Checkout)" routerLink="/display" routerLinkActive="active">Submit Order</a>
+        </button>
+    </div>
+</div>    
+</body>   
 </html>

@@ -15,7 +15,7 @@ export class BlackComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  AddToCart(black = {name: 'BlackDye', amount: 100, color: 'Black', price: 10})
+  AddToCart(black = {name: 'Black Dye', amount: 100, color: 'Black', price: 10})
   {
     this.AR.AddToCart(black);
     }
