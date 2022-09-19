@@ -1,1 +1,41 @@
-<p>login works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel = "stylesheet" href="login.component.css"/>
+</head>
+<h1 class="welcome">Welcome</h1>
+<body>
+    <div class="box">
+        <h1 class="logintxt">Sign In</h1>
+        <form method="post">
+            <div class="txt_field">
+                <input type="email" required>
+                <span></span>
+                <label>Email</label>
+            </div>
+            <div class="txt_field">
+                <input type="password" required>
+                <span></span>
+                <label>Password</label>
+            </div>
+            <div class="forgotpass">
+                <a routerLink="/reset password" routerLinkActive="active">Forgot Password?</a>
+            </div>
+            <div class="login_button">
+                    <a routerLink="/display" routerLinkActive="active">Sign In</a>    
+            </div>
+          
+            <div class="signup_link">
+                Don't Have An Account? <a routerLink="/register user" routerLinkActive="active">Sign Up</a>
+            </div>
+            <div class="guest_link">
+                Don't want to sign up? <a routerLink="/proceed as guest" routerLinkActive="active">Proceed As Guest</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

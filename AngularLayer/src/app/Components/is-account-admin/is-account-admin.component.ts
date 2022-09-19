@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularService } from 'src/app/services/ang-service.service.spec';
+import { AngularService } from 'src/app/services/ang-service.service'; 
 
 @Component({
   selector: 'app-is-account-admin',
