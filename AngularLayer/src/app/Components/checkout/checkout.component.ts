@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularService } from 'src/app/services/ang-service.service.spec';
-
+import { AngularService } from 'src/app/services/ang-service.service'; 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -8,17 +7,22 @@ import { AngularService } from 'src/app/services/ang-service.service.spec';
 })
 export class CheckoutComponent implements OnInit {
 
-  checkout: any;
+  checkout = this.AR.getItems();
+
   constructor(private AR: AngularService) { }
+
+  onSubmit(): void {
+    //Process checkout data here
+    this.checkout = this.AR.clearCart();
+    console.warn('Your order has been submitted');
+  }
 
   ngOnInit(): void {
   }
 
   Checkout()
   {
-    this.AR.postCheckout(this.checkout).then(data => {
-      this.checkout = data;
-    })
+    
   }
 
 }
